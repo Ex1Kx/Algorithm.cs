@@ -65,6 +65,7 @@ namespace JLCRUDPOO
             this.button1.TabIndex = 2;
             this.button1.Text = "Buscar";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // dataGridView1
             // 
@@ -93,7 +94,7 @@ namespace JLCRUDPOO
             // prnamesDataGridViewTextBoxColumn
             // 
             this.prnamesDataGridViewTextBoxColumn.DataPropertyName = "Prnames";
-            this.prnamesDataGridViewTextBoxColumn.HeaderText = "Prnames";
+            this.prnamesDataGridViewTextBoxColumn.HeaderText = "Nombres";
             this.prnamesDataGridViewTextBoxColumn.Name = "prnamesDataGridViewTextBoxColumn";
             // 
             // Form1
@@ -120,9 +121,9 @@ namespace JLCRUDPOO
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.BindingSource personsBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn prnamesDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource personsBindingSource;
     }
 }
 
