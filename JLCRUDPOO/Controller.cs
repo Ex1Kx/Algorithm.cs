@@ -10,6 +10,8 @@ namespace JLCRUDPOO
     class Controller : Conexion
     {
         public List<Object> query(string date)
+
+
         {
             MySqlDataReader reader;
             List<Object> list = new List<object>();
@@ -41,6 +43,65 @@ namespace JLCRUDPOO
                 Console.WriteLine(ex.Message.ToString());
             }
             return list;
+        }
+
+        public bool insert(Persons dates)
+        {
+            bool flag = false;
+            string sql = "INSERT INTO persons (prnames) VALUES ('" + dates.Prnames + "')";
+            try
+            {
+                MySqlConnection conexionDB = base.conexion();
+                conexionDB.Open();
+                MySqlCommand command = new MySqlCommand(sql, conexionDB);
+                command.ExecuteNonQuery();
+                flag = true;
+            }
+            catch(MySqlException ex)
+            {
+                Console.WriteLine(ex.Message.ToString());
+                flag = false;
+            }
+            return flag;
+        }
+
+        public bool update(Persons dates)
+        {
+            bool flag = false;
+            string sql = "UPDATE persons SET prnames='" + dates.Prnames + "' WHERE id='" + dates.Id + "'";
+            try
+            {
+                MySqlConnection conexionDB = base.conexion();
+                conexionDB.Open();
+                MySqlCommand command = new MySqlCommand(sql, conexionDB);
+                command.ExecuteNonQuery();
+                flag = true;
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message.ToString());
+                flag = false;
+            }
+            return flag;
+        }
+        public bool delete(int id)
+        {
+            bool flag = false;
+            string sql = "DELETE FROM persons WHERE id='" + id + "'";
+            try
+            {
+                MySqlConnection conexionDB = base.conexion();
+                conexionDB.Open();
+                MySqlCommand command = new MySqlCommand(sql, conexionDB);
+                command.ExecuteNonQuery();
+                flag = true;
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex.Message.ToString());
+                flag = false;
+            }
+            return flag;
         }
     }
 }
